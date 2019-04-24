@@ -55,6 +55,8 @@ class App extends Component {
             label: 'Completed'
           })
         }
+
+        <TodoForm />
       </div>
     )
   }

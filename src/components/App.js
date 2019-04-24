@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+
 import TodoList from './TodoComponents/TodoList'
+import TodoForm from './TodoComponents/TodoForm'
 
 import { applyClasses } from '../helpers'
 
@@ -25,8 +27,12 @@ const tasks = [
 
 // TODO: click handler that sets state of todo item to 'complete'
 
-const renderTodoList = ({todos=tasks, classes=["todo-item"]}) => (
-  <TodoList todos={todos} classList={applyClasses(classes)} />
+const renderTodoList = ({todos=tasks, classes=["todo-item"], label=""}) => (
+  <TodoList 
+    todos={todos} 
+    classList={applyClasses(classes)} 
+    label={label} 
+  />
 )
 
 class App extends Component {
@@ -35,16 +41,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h2>Procrastination List</h2>
-        
-
-        <h3>Immediately important</h3>
         {/* <TodoList className={'todo-list'} todos={this.state} /> */}
-        { renderTodoList({ todos: this.state }) }
+        { renderTodoList({ 
+            todos: this.state, 
+            label: 'Immediately important' 
+          }) 
+        }
         
-        <h3>Completed</h3>
         {/* <TodoList className={'todo-list'} todos={this.state} /> */}
-        {renderTodoList({todos:this.state.filter(x => x.completed), classList:['monkey', 'banana']})}
+        { renderTodoList({
+            todos:this.state.filter(x => x.completed),
+            classList:['monkey', 'banana'],
+            label: 'Completed'
+          })
+        }
       </div>
     )
   }

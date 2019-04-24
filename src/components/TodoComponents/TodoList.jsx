@@ -8,6 +8,7 @@ export default function TodoList(props) {
             { (props.label) ? <h2>{props.label}</h2> : null }
             { props.todos.map(todo => 
                 <Todo 
+                    key={todo.id}
                     content={todo.task} 
                     classList={todo.classList || 'todo-item'}
                 />

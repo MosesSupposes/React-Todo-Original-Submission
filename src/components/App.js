@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import Todo from './TodoComponents/Todo'
+import TodoList from './TodoComponents/TodoList'
 
-const initialState = [
+import { applyClasses } from '../helpers'
+
+
+const tasks = [
   {
     task: 'Organize Garage',
     id: 1528817077286,
@@ -11,14 +14,23 @@ const initialState = [
     task: 'Bake Cookies',
     id: 1528817084358,
     completed: false
+  },
+  {
+    task: 'Dynamically render todo items',
+    id: 2,
+    completed: true
   }
 ]
+  
 
 // TODO: click handler that sets state of todo item to 'complete'
 
+const renderTodoList = ({todos=tasks, classes=["todo-item"]}) => (
+  <TodoList todos={todos} classList={applyClasses(classes)} />
+)
 
 class App extends Component {
-  state = initialState
+  state = tasks
 
   render() {
     return (
@@ -27,11 +39,12 @@ class App extends Component {
         
 
         <h3>Immediately important</h3>
-        <h3>Not that important</h3>
-        <Todo 
-          classList={['green', 'large']}
-          content='add click handler that toggles the state of a todo item to "complete"'
-        />
+        {/* <TodoList className={'todo-list'} todos={this.state} /> */}
+        { renderTodoList({ todos: this.state }) }
+        
+        <h3>Completed</h3>
+        {/* <TodoList className={'todo-list'} todos={this.state} /> */}
+        {renderTodoList({todos:this.state.filter(x => x.completed), classList:['monkey', 'banana']})}
       </div>
     )
   }

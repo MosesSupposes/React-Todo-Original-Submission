@@ -40,7 +40,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         {/* <TodoList className={'todo-list'} todos={this.state} /> */}
         { renderTodoList({ 
             todos: this.state, 

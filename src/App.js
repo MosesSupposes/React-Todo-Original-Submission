@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Todo from './Todo'
 
 const initialState = [
   {
@@ -13,13 +14,24 @@ const initialState = [
   }
 ]
 
+// TODO: click handler that sets state of todo item to 'complete'
+
+
 class App extends Component {
   state = initialState
 
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
+        <h2>Procrastination List</h2>
+        
+
+        <h3>Immediately important</h3>
+        <h3>Not that important</h3>
+        <Todo 
+          classList={['green', 'large']}
+          content='add click handler that toggles the state of a todo item to "complete"'
+        />
       </div>
     )
   }

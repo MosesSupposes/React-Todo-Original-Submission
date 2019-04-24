@@ -37,6 +37,15 @@ const renderTodoList = ({todos=tasks, classes=["todo-item"], label=""}) => (
 
 class App extends Component {
   state = tasks
+  
+  
+  // "reducer" 
+  addTodo = (newTodo) => {
+    this.setState((prevState) => ([
+      ...prevState
+      , newTodo
+    ]))
+  }
 
   render() {
     return (
@@ -56,7 +65,7 @@ class App extends Component {
           })
         }
 
-        <TodoForm />
+        <TodoForm addTodo={this.addTodo} />
       </div>
     )
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 const initialState = [
   {
@@ -13,9 +13,9 @@ const initialState = [
   }
 ]
 
-class App extends React.Component {
+class App extends Component {
   state = initialState
-  
+
   render() {
     return (
       <div>

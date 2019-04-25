@@ -6,23 +6,25 @@ import TodoForm from './TodoComponents/TodoForm'
 import { applyClasses } from '../helpers'
 
 
-const tasks = [
-  {
-    task: 'Organize Garage',
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  },
-  {
-    task: 'Dynamically render todo items',
-    id: 2,
-    completed: true
-  }
-]
+const tasks = {
+  todos: [
+    {
+      task: 'Organize Garage',
+      id: 1528817077286,
+      completed: true
+    },
+    {
+      task: 'Bake Cookies',
+      id: 1528817084358,
+      completed: true
+    },
+    {
+      task: 'Dynamically render todo items',
+      id: 2,
+      completed: true
+    }
+  ]
+}
   
 
 // TODO: click handler that sets state of todo item to 'complete'
@@ -41,10 +43,12 @@ class App extends Component {
   
   // "reducer" 
   addTodo = (newTodo) => {
-    this.setState((prevState) => ([
-      ...prevState
-      , newTodo
-    ]))
+    this.setState(
+        (prevState) => ({
+        ...prevState
+        , todos: [...prevState.todos, newTodo]
+      })
+    )
   }
 
   render() {
@@ -52,14 +56,19 @@ class App extends Component {
       <div className="app">
         {/* <TodoList className={'todo-list'} todos={this.state} /> */}
         { renderTodoList({ 
-            todos: this.state, 
+            todos: this.state.todos, 
             label: 'Immediately important' 
+          }) 
+        }
+        { renderTodoList({ 
+            todos: this.state.todos, 
+            label: 'DO later (not important)' 
           }) 
         }
         
         {/* <TodoList className={'todo-list'} todos={this.state} /> */}
         { renderTodoList({
-            todos:this.state.filter(x => x.completed),
+            todos: this.state.todos.filter(x => x.completed),
             classList:['monkey', 'banana'],
             label: 'Completed'
           })

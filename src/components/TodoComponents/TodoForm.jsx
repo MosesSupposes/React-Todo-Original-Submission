@@ -7,11 +7,11 @@ export default function TodoForm(props) {
     const handleSubmit = e => {
         e.preventDefault()
         
-        // props.addTodo({
-        //     task: currentText,
-        //     completed: false
-        //     // id gets automatically generated inside TodoList Helper
-        // })
+        props.addTodo({
+            task: currentText,
+            completed: false
+            // id gets automatically generated inside TodoList Helper
+        })
         
     }
 

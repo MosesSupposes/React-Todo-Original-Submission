@@ -10,6 +10,7 @@ export default function TodoList(props) {
                 <Todo 
                     key={todo.id || i}
                     content={todo.task} 
+                    completed={todo.completed}
                     classList={todo.classList || 'todo-item'}
                 />
               )
